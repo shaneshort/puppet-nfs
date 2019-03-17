@@ -7,8 +7,8 @@ class nfs::client::debian (
   include ::nfs::client::debian::configure
   include ::nfs::client::debian::service
 
-  Class['::nfs::client::debian::install']->
-  Class['::nfs::client::debian::configure']->
-  Class['::nfs::client::debian::service']
+  Class['::nfs::client::debian::install']
+  -> Class['::nfs::client::debian::configure']
+  -> Class['::nfs::client::debian::service']
 
 }

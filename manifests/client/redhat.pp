@@ -7,8 +7,8 @@ class nfs::client::redhat (
   include ::nfs::client::redhat::configure
   include ::nfs::client::redhat::service
 
-  Class['::nfs::client::redhat::install']->
-  Class['::nfs::client::redhat::configure']->
-  Class['::nfs::client::redhat::service']
+  Class['::nfs::client::redhat::install']
+  -> Class['::nfs::client::redhat::configure']
+  -> Class['::nfs::client::redhat::service']
 
 }

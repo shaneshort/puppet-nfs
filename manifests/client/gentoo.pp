@@ -7,9 +7,9 @@ class nfs::client::gentoo (
   include ::nfs::client::gentoo::configure
   include ::nfs::client::gentoo::service
 
-  Class['::nfs::client::gentoo::install']->
-  Class['::nfs::client::gentoo::configure']->
-  Class['::nfs::client::gentoo::service']
+  Class['::nfs::client::gentoo::install']
+  -> Class['::nfs::client::gentoo::configure']
+  -> Class['::nfs::client::gentoo::service']
 
 
 }

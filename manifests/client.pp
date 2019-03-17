@@ -44,10 +44,10 @@ class nfs::client (
 
   # ensure dependencies for mount
 
-  Class["::nfs::client::${::nfs::params::osfamily}::install"] ->
-  Class["::nfs::client::${::nfs::params::osfamily}::configure"] ->
-  Class["::nfs::client::${::nfs::params::osfamily}::service"] ->
-  Class['::nfs::client']
+  Class["::nfs::client::${::nfs::params::osfamily}::install"]
+  -> Class["::nfs::client::${::nfs::params::osfamily}::configure"]
+  -> Class["::nfs::client::${::nfs::params::osfamily}::service"]
+  -> Class['::nfs::client']
 
   if !defined( Class["nfs::client::${::nfs::params::osfamily}"]) {
     class{ "nfs::client::${::nfs::params::osfamily}":
