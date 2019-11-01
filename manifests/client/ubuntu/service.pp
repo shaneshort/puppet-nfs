@@ -1,6 +1,11 @@
 class nfs::client::ubuntu::service {
 
-  service { 'rpcbind':
+  case $::lsbdistcodename {
+    'xenial', 'bionic', 'eoan': { $rpc_service = 'rpcbind.socket' }
+    default: { $rpc_service = 'rpcbind' }
+  }
+
+  service { $rpc_service:
     ensure    => running,
     enable    => true,
     hasstatus => false,
